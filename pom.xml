@@ -52,6 +52,38 @@
                 <findbugs.version>3.0.1</findbugs.version>
             </properties>
         </profile>
+        <profile>
+            <id>bintray-adjohnson916-maven</id>
+
+            <properties>
+                <bintray.user>adjohnson916</bintray.user>
+                <bintray.repo>maven</bintray.repo>
+                <bintray.package>test-driven-detectors4findbugs</bintray.package>
+            </properties>
+
+            <distributionManagement>
+                <repository>
+                    <id>bintray-adjohnson916-maven</id>
+                    <url>https://api.bintray.com/maven/${bintray.user}/${bintray.repo}/${bintray.package}</url>
+                </repository>
+            </distributionManagement>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.5.1</version>
+                        <configuration>
+                            <useReleaseProfile>false</useReleaseProfile>
+                            <releaseProfiles>release</releaseProfiles>
+                            <autoVersionSubmodules>true</autoVersionSubmodules>
+                            <pushChanges>false</pushChanges>
+                            <localCheckout>true</localCheckout>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
 	</profiles>
 	<build>
 		<plugins>
